@@ -3,6 +3,7 @@ package com.example.preAcademicInfo.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -12,6 +13,7 @@ public class User {
     private long id;
 
     @Column(length = 40, nullable = false)
+    @Size(min=8, max = 40, message = "Username must be between {min} and {max} characters")
     private String username;
 
     @Column(length = 40, nullable = false)
@@ -71,5 +73,16 @@ public class User {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", profile=" + profile +
+                '}';
     }
 }

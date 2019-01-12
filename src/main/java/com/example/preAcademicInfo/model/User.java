@@ -1,88 +1,54 @@
 package com.example.preAcademicInfo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.preAcademicInfo.bases.BaseObject;
+import com.example.preAcademicInfo.validation.userValidation.ValidEmail;
+import com.example.preAcademicInfo.validation.userValidation.ValidPassword;
+import com.example.preAcademicInfo.validation.userValidation.ValidUsername;
+import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
-public class User {
+@Data
+public class User extends BaseObject implements Serializable {
 
-    @Id
-    @Column
-    private long id;
-
-    @Column(length = 40, nullable = false)
-    @Size(min=8, max = 40, message = "Username must be between {min} and {max} characters")
+    @Column(nullable = false)
+    @Size(min = 5, max = 40, message = "Username must be between {min} and {max} characters")
+//    @ValidUsername
     private String username;
 
-    @Column(length = 40, nullable = false)
+    @Column(nullable = false)
+//    @ValidPassword
     private String password;
 
     @Column(length = 40, nullable = false)
+    @Email
+//    @ValidEmail
     private String email;
 
     @Column(nullable = false)
-    private Profile profile;
+    private String profile;
 
-    public User() {
-    }
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Student student;
 
-    public User(String username, String password, String email, Profile profile) {
+    @Column
+    private Boolean disabled;
+
+
+    public User(String username, String password, String email, String profile) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.profile = profile;
     }
 
-    public long getId() {
-        return id;
-    }
+    public User(){
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", profile=" + profile +
-                '}';
     }
 }

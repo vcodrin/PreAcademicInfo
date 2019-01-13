@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %>
+<%@ include file="headerLogin.jsp" %>
 
 <form method="post" action="${action}">
     <table>

@@ -9,7 +9,16 @@ body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
 }
-
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+span,.navbar-brand{
+  font-size:24px;
+}
 /*---------------------------------------------*/
 a {
 	font-size: 14px;

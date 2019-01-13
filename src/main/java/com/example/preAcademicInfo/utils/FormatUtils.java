@@ -1,25 +1,17 @@
 package com.example.preAcademicInfo.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-
 import java.util.UUID;
 
 public class FormatUtils {
 
-    @Autowired
-    private static Environment env;
-
+    private static EnvUtil env = ContextProvider.getBean(EnvUtil.class);
 
     public static boolean isNullOrEmpty(String string){
         return string == null || string.trim().isEmpty();
     }
 
     public static boolean isValidInput(String value){
-        if (env == null){
-            return true;
-        }
-        String reg = env.getProperty("input.invalid");
+        String reg = env.getEnv().getProperty("input.invalid");
         return reg == null || !value.trim().matches(reg);
     }
 

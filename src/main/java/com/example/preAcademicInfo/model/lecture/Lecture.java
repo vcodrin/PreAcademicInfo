@@ -28,4 +28,9 @@ public class Lecture extends AbstractCourseType implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    @Override
+    public String toString() {
+        return minAttendances + " " + totalAttendances + " " + finalGradePercentage + " " + requiresGrades;
+    }
 }

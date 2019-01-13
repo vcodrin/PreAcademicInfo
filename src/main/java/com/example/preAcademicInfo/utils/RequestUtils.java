@@ -1,6 +1,7 @@
 package com.example.preAcademicInfo.utils;
 
 import com.example.preAcademicInfo.bases.AbstractConstant;
+import com.example.preAcademicInfo.bases.AbstractCourseType;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -15,6 +16,11 @@ public class RequestUtils {
             values.put(constant.getName(), (val != null ? val : new String[0]));
         }
         return values;
+    }
+
+    public static String getParameterValue(AbstractConstant name, HttpServletRequest request){
+        String s = request.getParameter(name.getName());
+        return s == null ? "" : s;
     }
 
 }

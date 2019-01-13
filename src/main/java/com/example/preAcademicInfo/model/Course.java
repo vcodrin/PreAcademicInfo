@@ -58,4 +58,8 @@ public class Course extends BaseObject implements Serializable {
 
     public Course() {
     }
+
+    public String toString(){
+        return name +" "+ code;
+    }
 }

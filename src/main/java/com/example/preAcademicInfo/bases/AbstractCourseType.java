@@ -10,23 +10,23 @@ public abstract class AbstractCourseType extends BaseObject {
 
     @Column
     @NotNull
-    private Integer minAttendances;
+    protected Integer minAttendances;
 
     @Column
     @NotNull
-    private Integer totalAttendances;
+    protected Integer totalAttendances;
 
     @Column
     @NotNull
-    private Integer finalGradePercentage;
+    protected Integer finalGradePercentage;
 
     @Column
     @NotNull
-    private Boolean requiresGrades;
+    protected Boolean requiresGrades;
 
     @Column
     @NotNull
-    private Boolean requiresPresence;
+    protected Boolean requiresPresence;
 
 
     public Boolean getRequiresGrades() {

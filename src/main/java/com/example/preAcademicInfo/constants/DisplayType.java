@@ -9,9 +9,10 @@ public class DisplayType extends AbstractConstant {
     public static final DisplayType BUTTON = new DisplayType("button");
     public static final DisplayType SUBMIT = new DisplayType("submit");
     public static final DisplayType INPUT_TEXT = new DisplayType("text");
-    public static DisplayType[] values = {TEXT, PASSWORD, CHECKBOX, BUTTON, SUBMIT};
+    public static final DisplayType INPUT_NUMBER = new DisplayType("number");
+    public static DisplayType[] values = {TEXT, PASSWORD, CHECKBOX, BUTTON, SUBMIT, INPUT_TEXT, INPUT_NUMBER};
 
-    public DisplayType(String name) {
+    private DisplayType(String name) {
         super(name);
     }
 

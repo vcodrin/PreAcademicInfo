@@ -1,0 +1,17 @@
+<functions>
+	<function id="1">
+        <name>Add Course</name>
+		<profile>Admin</profile>
+		<url>/addCourse</url>
+    </function>
+	<function id="2">
+        <name>View Courses</name>
+		<profile>Student</profile>
+		<url>/myCourses</url>
+    </function>
+	<function id="3">
+        <name>Add Student</name>
+		<profile>Admin</profile>
+		<url>/addStudent</url>
+    </function>
+</functions>

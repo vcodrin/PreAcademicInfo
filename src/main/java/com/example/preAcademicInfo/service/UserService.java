@@ -1,6 +1,5 @@
 package com.example.preAcademicInfo.service;
 
-import com.example.preAcademicInfo.error.UserError;
 import com.example.preAcademicInfo.error.ValidationError;
 import com.example.preAcademicInfo.model.Student;
 import com.example.preAcademicInfo.model.User;
@@ -13,9 +12,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -64,11 +63,12 @@ public class UserService {
             if (userForLogin != null) {
                 if (!encoder.matches(user.getPassword(), userForLogin.getPassword())) {
                     return new ValidationError("user.password.match", env);
-                }else{
-                    if (userForLogin.getDisabled()){
-                        return new ValidationError("user.account.disabled", env);
-                    }
                 }
+// else{
+//                    if (userForLogin.getDisabled()){
+//                        return new ValidationError("user.account.disabled", env);
+//                    }
+//                }
             } else {
                 return new ValidationError("user.notFound", env);
             }
@@ -139,4 +139,5 @@ public class UserService {
             }
         }
     }
+
 }

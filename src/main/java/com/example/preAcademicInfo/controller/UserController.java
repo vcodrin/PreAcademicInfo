@@ -34,7 +34,7 @@ public class UserController {
         this.env = env;
     }
 
-    @GetMapping(value = {"/", "/login"})
+    @GetMapping(value = "/login")
     public String login(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("action", "/login");
@@ -57,16 +57,15 @@ public class UserController {
     @PostMapping(value = "/login")
     public String login(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
 
-        System.out.println(user);
         ValidationError error = userService.verifyLogin(user);
         if (!error.isEmpty()) {
             model.addAttribute("error", error);
             model.addAttribute("forgotPassword", "/forgotPassword");
             return "login";
         }
-        request.setAttribute("username",user.getUsername());
-        request.setAttribute("role", user.getProfile());
-        return "test";
+        request.getSession().setAttribute("username",user.getUsername());
+        request.getSession().setAttribute("role", user.getProfile());
+        return "home";
     }
 
     @GetMapping(value = "/forgotPassword")

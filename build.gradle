@@ -35,4 +35,6 @@ dependencies {
 	testImplementation('org.springframework.security:spring-security-test')
 	compileOnly 'org.projectlombok:lombok:1.16.22'
 	annotationProcessor 'org.projectlombok:lombok:1.16.22'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	implementation 'org.apache.commons:commons-lang3'
 }

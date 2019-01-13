@@ -28,4 +28,11 @@ public class ValidationError {
     }
 
 
+    @Override
+    public String toString() {
+        return "ValidationError{" +
+                "label='" + label + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

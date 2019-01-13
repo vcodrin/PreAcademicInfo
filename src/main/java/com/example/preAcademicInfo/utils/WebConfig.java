@@ -20,6 +20,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security)throws Exception{
         security.httpBasic().disable();
     }
+
 //
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {

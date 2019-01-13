@@ -18,16 +18,16 @@ public class User extends BaseObject implements Serializable {
 
     @Column(nullable = false)
     @Size(min = 5, max = 40, message = "Username must be between {min} and {max} characters")
-//    @ValidUsername
+    @ValidUsername
     private String username;
 
     @Column(nullable = false)
-//    @ValidPassword
+    @ValidPassword
     private String password;
 
     @Column(length = 40, nullable = false)
     @Email
-//    @ValidEmail
+    @ValidEmail
     private String email;
 
     @Column(nullable = false)

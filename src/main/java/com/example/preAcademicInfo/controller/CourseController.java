@@ -2,8 +2,13 @@ package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.bases.Record;
 import com.example.preAcademicInfo.constants.CourseAttribute;
+import com.example.preAcademicInfo.data.FunctionsSingletone;
+import com.example.preAcademicInfo.dto.CourseDTO;
 import com.example.preAcademicInfo.error.ValidationError;
 import com.example.preAcademicInfo.model.Course;
+import com.example.preAcademicInfo.model.laboratory.Laboratory;
+import com.example.preAcademicInfo.model.lecture.Lecture;
+import com.example.preAcademicInfo.model.seminar.Seminar;
 import com.example.preAcademicInfo.service.CourseService;
 import com.example.preAcademicInfo.utils.RequestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class CourseController {
@@ -30,31 +34,41 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    public void addAttrituesToModel(Model model) {
-        model.addAttribute("modelAttribute", "course");
-        model.addAttribute("course", new Course());
+    private void addAttributesToModel(Model model) {
+        model.addAttribute("modelAttribute", "courseDTO");
+        model.addAttribute("courseDTO", new CourseDTO());
         model.addAttribute("action", "/addCourse");
         model.addAttribute("inputAttributes", CourseAttribute.values);
+        model.addAttribute("common", CourseAttribute.common);
+        model.addAttribute("laboratory",new Laboratory());
+        model.addAttribute("lecture",new Lecture());
+        model.addAttribute("seminar",new Seminar());
     }
 
     @GetMapping(value = "/addCourse")
     public String addCourse(Model model) {
-        addAttrituesToModel(model);
+        addAttributesToModel(model);
         return "addCourse";
     }
 
     @PostMapping(value = "/addCourse")
-    public String addCourse(@Valid @ModelAttribute("course") Course course, BindingResult bindingResult, Model model, HttpServletRequest request) {
-
-
-        Map<String,String[]> values = RequestUtils.getParametersValues(CourseAttribute.checkboxes,request);
-
-        List<ValidationError> errors = new ArrayList<>();
-        courseService.createCourse(course, values, errors);
+    public String addCourse(@Valid @ModelAttribute("courseDTO") CourseDTO courseDTO, BindingResult bindingResult, Model model, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            addAttrituesToModel(model);
+            addAttributesToModel(model);
             return "addCourse";
         }
-        return "addCourse";
+
+        List<ValidationError> errors = new ArrayList<>();
+        String seminar = RequestUtils.getParameterValue(CourseAttribute.SEMINAR, request);
+        String laboratory = RequestUtils.getParameterValue(CourseAttribute.LABORATORY, request);
+        String lecture = RequestUtils.getParameterValue(CourseAttribute.LECTURE, request);
+
+        courseService.createCourse(courseDTO,seminar,laboratory,lecture, errors);
+        if (!errors.isEmpty()){
+            model.addAttribute("errors", errors);
+            addAttributesToModel(model);
+            return "addCourse";
+        }
+        return "redirect:/main";
     }
 }

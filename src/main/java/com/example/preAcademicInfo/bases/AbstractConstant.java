@@ -18,7 +18,7 @@ public abstract class AbstractConstant {
         return name;
     }
 
-    public <U extends AbstractConstant> U valueOf(AbstractConstant constant, U[] values){
+    public static <U extends AbstractConstant> U valueOf(AbstractConstant constant, U[] values){
         U value = null;
         for(U val : values){
             if (val.equals(constant)){

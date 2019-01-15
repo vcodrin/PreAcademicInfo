@@ -23,6 +23,9 @@ public class Function {
         this.profile = profile;
     }
 
+    public Function() {
+    }
+
     public String getProfile() {
         return profile;
     }

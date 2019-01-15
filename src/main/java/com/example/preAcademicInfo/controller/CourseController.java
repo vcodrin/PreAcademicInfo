@@ -57,7 +57,6 @@ public class CourseController {
             addAttributesToModel(model);
             return "addCourse";
         }
-
         List<ValidationError> errors = new ArrayList<>();
         String seminar = RequestUtils.getParameterValue(CourseAttribute.SEMINAR, request);
         String laboratory = RequestUtils.getParameterValue(CourseAttribute.LABORATORY, request);

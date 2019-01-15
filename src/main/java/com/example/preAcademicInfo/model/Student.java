@@ -4,11 +4,11 @@ import com.example.preAcademicInfo.bases.BaseObject;
 import com.example.preAcademicInfo.model.laboratory.LaboratoryRecordStudent;
 import com.example.preAcademicInfo.model.lecture.LectureRecordStudent;
 import com.example.preAcademicInfo.model.seminar.SeminarRecordStudent;
-import com.example.preAcademicInfo.validation.userValidation.ValidEmail;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
@@ -18,13 +18,16 @@ import java.util.List;
 public class Student extends BaseObject implements Serializable {
 
     @Column
+    @NotNull
     private String firstName;
 
     @Column
+    @NotNull
     private String lastName;
 
     @Column
-    @Size(min = 13, max = 13)
+    @Size(min = 13, max = 13, message = "CNP must contain only 13 characters")
+    @NotNull
     private String cnp;
 
     @Column
@@ -34,11 +37,12 @@ public class Student extends BaseObject implements Serializable {
     private Boolean budget;
 
     @Column
+    @NotNull
     private String nrMatricol;
 
     @Column(length = 40, nullable = false)
     @Email
-    @ValidEmail
+//    @ValidEmail
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -68,5 +72,9 @@ public class Student extends BaseObject implements Serializable {
         this.cnp = cnp;
         this.tax = tax;
         this.budget = budget;
+    }
+
+    public Student(){
+
     }
 }

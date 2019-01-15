@@ -60,7 +60,7 @@
 
     function showElements(el, speed) {
         for (var i = 0; i < 9; i++) {
-            el.attr("required","required");
+            el.attr("required", "required");
             el = el.next();
             el.show(speed);
         }

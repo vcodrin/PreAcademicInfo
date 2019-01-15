@@ -1,7 +1,5 @@
 package com.example.preAcademicInfo.data;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +27,6 @@ public class FunctionsSingletone {
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(".\\src\\main\\resources\\xml\\Functions.xml"));
             String a = StringUtils.toEncodedString(bytes, StandardCharsets.UTF_8);
-            System.out.println(a);
             functions = objectMapper.readValue(a, Functions.class);
 
         } catch (IOException e) {

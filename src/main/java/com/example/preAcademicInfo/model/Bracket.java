@@ -28,6 +28,10 @@ public class Bracket extends BaseObject implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bracket", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Student> students;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idGroup", nullable = false)
+    private Exam exam;
+
     public Bracket(String number, String year) {
         this.number = number;
         this.year = year;

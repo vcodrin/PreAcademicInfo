@@ -1,6 +1,7 @@
 package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.error.ValidationError;
+import com.example.preAcademicInfo.model.Profile;
 import com.example.preAcademicInfo.model.User;
 import com.example.preAcademicInfo.repository.UserRepository;
 import com.example.preAcademicInfo.service.UserService;
@@ -64,8 +65,8 @@ public class UserController {
             return "login";
         }
         request.getSession().setAttribute("username",user.getUsername());
-        request.getSession().setAttribute("role", user.getProfile());
-        return "home";
+        request.getSession().setAttribute("role", Profile.ADMIN.getName());
+        return "redirect:/home";
     }
 
     @GetMapping(value = "/forgotPassword")
@@ -74,7 +75,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/forgotPassword")
-    public String forgotPassword(Model model, HttpServletRequest request){
+    public String forgotPassword(HttpServletRequest request){
 
         String email = (String) request.getAttribute("email");
         String nrMatricol = (String) request.getAttribute("nrMatricol");

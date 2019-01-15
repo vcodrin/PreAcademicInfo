@@ -1,4 +1,4 @@
-package com.example.preAcademicInfo.utils;
+package com.example.preAcademicInfo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,24 +17,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity security)throws Exception{
+    protected void configure(HttpSecurity security)throws Exception {
         security.httpBasic().disable();
     }
-
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                    .antMatchers("/resources/**")
-//                    .permitAll()
-//                    .anyRequest()
-//                    .authenticated()
-//                    .and()
-//                .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .and()
-//                .logout().permitAll();
-//}
 }

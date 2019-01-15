@@ -18,10 +18,10 @@ public abstract class AbstractConstant {
         return name;
     }
 
-    public static <U extends AbstractConstant> U valueOf(AbstractConstant constant, U[] values){
+    public static <U extends AbstractConstant> U valueOf(String constant, U[] values){
         U value = null;
         for(U val : values){
-            if (val.equals(constant)){
+            if (val.getName().equals(constant)){
                 value = val;
                 break;
             }

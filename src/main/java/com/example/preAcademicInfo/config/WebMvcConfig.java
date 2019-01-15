@@ -1,4 +1,4 @@
-package com.example.preAcademicInfo.utils;
+package com.example.preAcademicInfo.config;
 
 import com.example.preAcademicInfo.controller.interceptor.Interceptor;
 import org.springframework.context.annotation.Bean;
@@ -38,6 +38,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new Interceptor()).addPathPatterns("/**").excludePathPatterns("/login");
         registry.addInterceptor(new Interceptor());
     }
 

@@ -1,4 +1,14 @@
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 
-<h1>Hello there</h1>
-<%@ include file="footer.jsp"%>
+
+<div class="container">
+    <h2>Some items</h2>
+    <div class="list-group">
+        <c:forEach var="item" items="${functions}">
+            <a href="${item.getUrl()}" class="list-group-item">${item.getName()}</a>
+        </c:forEach>
+    </div>
+</div>
+
+
+<%@ include file="footer.jsp" %>

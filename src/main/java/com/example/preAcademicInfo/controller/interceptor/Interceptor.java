@@ -1,12 +1,8 @@
 package com.example.preAcademicInfo.controller.interceptor;
 
 import com.example.preAcademicInfo.constants.FucntionsC;
-import com.example.preAcademicInfo.data.Function;
-import com.example.preAcademicInfo.data.FunctionsSingletone;
-import com.example.preAcademicInfo.model.User;
 import com.example.preAcademicInfo.service.UserService;
 import com.example.preAcademicInfo.utils.ContextProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,29 +35,7 @@ public class Interceptor extends HandlerInterceptorAdapter {
             } else if (!alreadyLoggedIn && !loginPageRequested) {
                 response.sendRedirect(request.getContextPath() + "/login");
                 return false;
-            } else {
-                if (rm == null || rm.value()[0] == null) {
-                    request.logout();
-                    response.sendRedirect(request.getContextPath() + "/login");
-                    return false;
-                }
-                String path = rm.value()[0];
-                String profile = (String) request.getSession().getAttribute("profile");
-
-                if (FucntionsC.values.contains(new FucntionsC(path))){
-                    response.sendRedirect(request.getContextPath() + "/home");
-                    return false;
-                }
-
-                for (FucntionsC function : FucntionsC.values) {
-                    if (function.getProfile().getName().equals(profile) && path.equals(function.getPath())){
-                        return true;
-                    }
-                }
-                response.sendRedirect(request.getContextPath() + "/home");
-                return false;
             }
-
         }
         return true;
     }

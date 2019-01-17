@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-public class Bracket extends BaseObject implements Serializable {
+@Entity(name ="`group`")
+public class Group extends BaseObject implements Serializable {
 
     @Column
     private String number;
@@ -17,25 +17,25 @@ public class Bracket extends BaseObject implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
-            mappedBy = "bracket")
+            mappedBy = "group")
     private Specialization specialization;
 
-    @ManyToMany(mappedBy = "brackets")
+    @ManyToMany(mappedBy = "groups")
     private List<Professor> professors;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bracket", orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "group", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Student> students;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idGroup")
     private Exam exam;
 
-    public Bracket(String number, String year) {
+    public Group(String number, String year) {
         this.number = number;
         this.year = year;
     }
 
-    public Bracket() {
+    public Group() {
 
     }
 

@@ -43,8 +43,8 @@ public class Student extends BaseObject implements Serializable {
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idBracket")
-    private Bracket bracket;
+    @JoinColumn(name = "idGroup")
+    private Group group;
 
     @ManyToMany(mappedBy = "students")
     private List<Course> courses;
@@ -133,12 +133,12 @@ public class Student extends BaseObject implements Serializable {
         this.email = email;
     }
 
-    public Bracket getBracket() {
-        return bracket;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setBracket(Bracket bracket) {
-        this.bracket = bracket;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public List<Course> getCourses() {

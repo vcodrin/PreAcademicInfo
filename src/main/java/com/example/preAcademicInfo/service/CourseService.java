@@ -7,6 +7,7 @@ import com.example.preAcademicInfo.constants.CourseAttribute;
 import com.example.preAcademicInfo.dto.CourseDTO;
 import com.example.preAcademicInfo.error.ValidationError;
 import com.example.preAcademicInfo.model.Course;
+import com.example.preAcademicInfo.model.Student;
 import com.example.preAcademicInfo.model.laboratory.Laboratory;
 import com.example.preAcademicInfo.model.laboratory.LaboratoryRecord;
 import com.example.preAcademicInfo.model.lecture.Lecture;
@@ -107,4 +108,5 @@ public class CourseService {
             courseRepository.save(course);
         }
     }
+
 }

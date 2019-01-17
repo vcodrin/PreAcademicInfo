@@ -19,4 +19,9 @@
 		<profile>Admin</profile>
 		<url>/addGroup</url>
 	</function>
+	<function id = "5">
+		<name>My Courses</name>
+		<profile>Student</profile>
+		<url>/myCourses</url>
+	</function>
 </functions>

@@ -21,7 +21,7 @@ public class Specialization extends BaseObject implements Serializable {
     private String line;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private Bracket bracket;
+    private Group group;
 
 
     public Specialization(String name, String number, String line) {
@@ -57,11 +57,11 @@ public class Specialization extends BaseObject implements Serializable {
         this.line = line;
     }
 
-    public Bracket getBracket() {
-        return bracket;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setBracket(Bracket bracket) {
-        this.bracket = bracket;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

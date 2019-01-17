@@ -48,9 +48,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         PasswordEncoder encoder = ContextProvider.getBean(PasswordEncoder.class);
         User u = repo.findByUsername("admin");
         if (u == null) {
-            return args -> {
-                repo.save(new User("admin", encoder.encode("admin"), "mail@mail.com", Profile.ADMIN.getName()));
-            };
+            return args -> repo.save(new User("admin", encoder.encode("admin"), "mail@mail.com", Profile.ADMIN.getName()));
         }
         return args -> {};
     }

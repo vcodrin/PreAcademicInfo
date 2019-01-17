@@ -24,7 +24,7 @@ public class Exam extends BaseObject implements Serializable {
     private Course course;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam", orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Bracket> groups;
+    private List<Group> groups;
 
     public Exam(String type, Date dueDate) {
         this.type = type;
@@ -66,11 +66,11 @@ public class Exam extends BaseObject implements Serializable {
         this.course = course;
     }
 
-    public List<Bracket> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Bracket> groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 }

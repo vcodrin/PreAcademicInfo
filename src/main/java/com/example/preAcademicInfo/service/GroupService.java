@@ -1,6 +1,6 @@
 package com.example.preAcademicInfo.service;
 
-import com.example.preAcademicInfo.model.Bracket;
+import com.example.preAcademicInfo.model.Group;
 import com.example.preAcademicInfo.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ public class GroupService {
         this.groupRepository = groupRepository;
     }
 
-    public void saveGroup(Bracket bracket, BindingResult bindingResult) {
+    public void saveGroup(Group group, BindingResult bindingResult) {
 
         if (!bindingResult.hasErrors()) {
-            groupRepository.save(bracket);
+            groupRepository.save(group);
         }
     }
 }

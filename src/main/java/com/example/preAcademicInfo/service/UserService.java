@@ -136,4 +136,7 @@ public class UserService {
         }
     }
 
+    public User findLoggedUser(String username, String role) {
+        return userRepository.findByUsernameAndProfile(username, role);
+    }
 }

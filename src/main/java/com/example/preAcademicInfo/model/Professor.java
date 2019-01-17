@@ -20,10 +20,10 @@ public class Professor extends BaseObject implements Serializable {
 
     @ManyToMany
     @JoinTable(
-            name = "professorBracket",
+            name = "professorGroup",
             joinColumns = @JoinColumn(name = "idProfessor"),
-            inverseJoinColumns = @JoinColumn(name = "idBracket"))
-    private List<Bracket> brackets;
+            inverseJoinColumns = @JoinColumn(name = "idGroup"))
+    private List<Group> groups;
 
     @ManyToMany
     @JoinTable(
@@ -65,12 +65,12 @@ public class Professor extends BaseObject implements Serializable {
         this.title = title;
     }
 
-    public List<Bracket> getBrackets() {
-        return brackets;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setBrackets(List<Bracket> brackets) {
-        this.brackets = brackets;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public List<Course> getCourses() {

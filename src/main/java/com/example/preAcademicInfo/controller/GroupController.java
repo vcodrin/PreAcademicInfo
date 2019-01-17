@@ -1,7 +1,7 @@
 package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.constants.BracketAttribute;
-import com.example.preAcademicInfo.model.Bracket;
+import com.example.preAcademicInfo.model.Group;
 import com.example.preAcademicInfo.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,17 +27,17 @@ public class GroupController {
     @GetMapping(value = "/addGroup")
     public String addGroup(Model model){
 
-        addToModel(model, new Bracket());
+        addToModel(model, new Group());
         return "addGroup";
     }
 
     @PostMapping(value = "/addGroup")
-    public String addGroup(@Valid @ModelAttribute("bracket") Bracket bracket, BindingResult bindingResult, Model model, Errors errors){
+    public String addGroup(@Valid @ModelAttribute("group") Group group, BindingResult bindingResult, Model model, Errors errors){
 
-        groupService.saveGroup(bracket, bindingResult);
+        groupService.saveGroup(group, bindingResult);
         if (bindingResult.hasErrors()){
             model.addAttribute("errors", errors);
-            addToModel(model,bracket);
+            addToModel(model, group);
             return "addGroup";
         }
 
@@ -46,9 +46,9 @@ public class GroupController {
 
 
 
-    private void addToModel(Model model, Bracket bracket){
-        model.addAttribute("model","bracket");
-        model.addAttribute("bracket", bracket);
+    private void addToModel(Model model, Group group){
+        model.addAttribute("model","group");
+        model.addAttribute("group", group);
         model.addAttribute("attributes", BracketAttribute.values);
     }
 }

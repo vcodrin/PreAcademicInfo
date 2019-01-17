@@ -23,7 +23,7 @@ public class LaboratoryRecord extends Record {
     }
 
     public String toString(){
-        return "hehe";
+        return "s";
     }
 
     public Float getPercentageLaboratoryGrade() {

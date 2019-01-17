@@ -31,7 +31,9 @@ public class StudentService {
             user.setDisabled(false);
             user.setEmail(student.getEmail());
             user.setPassword(encoder.encode(student.getCnp()));
-            user.setUsername(student.getFirstName().concat(student.getLastName().concat(student.getCnp().substring(0, 5))));
+            user.setUsername(student.getLastName().substring(0,1).toLowerCase()
+                    .concat(student.getFirstName()).toLowerCase()
+                    .concat(student.getCnp().substring(0, 7)));
             user.setProfile(Profile.STUDENT.getName());
             student.setUser(user);
             studentRepository.save(student);

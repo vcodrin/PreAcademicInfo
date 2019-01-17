@@ -63,6 +63,9 @@ public class UserController {
 
         ValidationError error = new ValidationError();
         User userForLogin = userService.verifyLogin(user,error);
+        if (userForLogin == null && error.isEmpty()){
+            error = new ValidationError("user.notFound", env.getEnv());
+        }
         if (!error.isEmpty()) {
             model.addAttribute("error", error);
             model.addAttribute("forgotPassword", "/forgotPassword");

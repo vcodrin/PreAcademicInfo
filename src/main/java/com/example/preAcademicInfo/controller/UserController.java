@@ -72,7 +72,7 @@ public class UserController {
             return "login";
         }
         request.getSession().setAttribute("username",user.getUsername());
-        request.getSession().setAttribute("role", Profile.ADMIN.getName());
+        request.getSession().setAttribute("role", userForLogin.getProfile());
         return "redirect:/home";
     }
 

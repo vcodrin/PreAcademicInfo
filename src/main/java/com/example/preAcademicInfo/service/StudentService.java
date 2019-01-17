@@ -36,6 +36,7 @@ public class StudentService {
                     .concat(student.getCnp().substring(0, 7)));
             user.setProfile(Profile.STUDENT.getName());
             student.setUser(user);
+            user.setStudent(student);
             studentRepository.save(student);
         }
     }

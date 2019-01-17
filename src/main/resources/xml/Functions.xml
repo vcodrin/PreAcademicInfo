@@ -5,21 +5,16 @@
 		<url>/addCourse</url>
     </function>
 	<function id="2">
-        <name>View Courses</name>
-		<profile>Student</profile>
-		<url>/myCourses</url>
-    </function>
-	<function id="3">
         <name>Add Student</name>
 		<profile>Admin</profile>
 		<url>/addStudent</url>
     </function>
-	<function id="4">
+	<function id="3">
 		<name>Add Group</name>
 		<profile>Admin</profile>
 		<url>/addGroup</url>
 	</function>
-	<function id = "5">
+	<function id ="4">
 		<name>My Courses</name>
 		<profile>Student</profile>
 		<url>/myCourses</url>

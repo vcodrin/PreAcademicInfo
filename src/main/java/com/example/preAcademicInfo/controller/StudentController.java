@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -65,8 +66,12 @@ public class StudentController {
         if (user == null) {
             return "redirect:/home";
         }
-        model.addAttribute("courses", user.getStudent().getCourses());
-        return "myCourser";
+        List<Course> courses = new ArrayList<>();
+        courses.add(new Course("asd","asd"));
+        courses.add(new Course("asd","asd"));
+        courses.add(new Course("asd","asd"));
+        model.addAttribute("courses", courses);
+        return "myCourses";
     }
 
     private void addToModel(Model model, Student student) {

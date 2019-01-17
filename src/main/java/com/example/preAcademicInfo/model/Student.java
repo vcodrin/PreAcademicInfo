@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -142,6 +143,8 @@ public class Student extends BaseObject implements Serializable {
     }
 
     public List<Course> getCourses() {
+        if (courses == null)
+            return new ArrayList<>();
         return courses;
     }
 

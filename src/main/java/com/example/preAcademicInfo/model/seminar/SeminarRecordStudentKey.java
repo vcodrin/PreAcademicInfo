@@ -1,13 +1,10 @@
 package com.example.preAcademicInfo.model.seminar;
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-@Data
 public class SeminarRecordStudentKey implements Serializable {
 
     @Column
@@ -15,4 +12,22 @@ public class SeminarRecordStudentKey implements Serializable {
     @Column
     private Long studentId;
 
+    public SeminarRecordStudentKey() {
+    }
+
+    public Long getSeminarRecordId() {
+        return seminarRecordId;
+    }
+
+    public void setSeminarRecordId(Long seminarRecordId) {
+        this.seminarRecordId = seminarRecordId;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
 }

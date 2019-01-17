@@ -1,42 +1,45 @@
 package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.error.ValidationError;
-import com.example.preAcademicInfo.model.Profile;
+import com.example.preAcademicInfo.constants.Profile;
 import com.example.preAcademicInfo.model.User;
 import com.example.preAcademicInfo.repository.UserRepository;
 import com.example.preAcademicInfo.service.UserService;
 import com.example.preAcademicInfo.utils.EnvUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
-
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
     private final EnvUtil env;
 
     @Autowired
-    public UserController(UserService userService, EnvUtil env) {
+    public UserController(UserService userService, UserRepository userRepository, PasswordEncoder encoder, EnvUtil env) {
         this.userService = userService;
+        this.userRepository = userRepository;
+        this.encoder = encoder;
         this.env = env;
     }
 
     @GetMapping(value = "/login")
     public String login(Model model) {
+//        User user = new User("admin",encoder.encode("admin"),"mail@mail.com", Profile.ADMIN.getName());
+//        userRepository.save(user);
         model.addAttribute("user", new User());
         model.addAttribute("action", "/login");
         model.addAttribute("forgotPassword", "/forgotPassword");
@@ -58,7 +61,8 @@ public class UserController {
     @PostMapping(value = "/login")
     public String login(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
 
-        ValidationError error = userService.verifyLogin(user);
+        ValidationError error = new ValidationError();
+        User userForLogin = userService.verifyLogin(user,error);
         if (!error.isEmpty()) {
             model.addAttribute("error", error);
             model.addAttribute("forgotPassword", "/forgotPassword");
@@ -86,5 +90,17 @@ public class UserController {
             return "successPasswordChange";
         }
         return "forgotPassword";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute("role");
+        request.getSession().removeAttribute("username");
+        try {
+            request.logout();
+        } catch (ServletException e) {
+//            e.printStackTrace();
+        }
+        return "redirect:/login";
     }
 }

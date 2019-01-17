@@ -1,15 +1,12 @@
 package com.example.preAcademicInfo.model.lecture;
 
 import com.example.preAcademicInfo.bases.Record;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
 public class LectureRecord extends Record {
 
     @OneToMany(mappedBy = "lectureRecord", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -18,6 +15,9 @@ public class LectureRecord extends Record {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idLecture", nullable = false)
     private Lecture lecture;
+
+    public LectureRecord() {
+    }
 
     public List<LectureRecordStudent> getRecords() {
         return records;
@@ -29,5 +29,13 @@ public class LectureRecord extends Record {
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
+    }
+
+    public void setRecords(List<LectureRecordStudent> records) {
+        this.records = records;
+    }
+
+    public Lecture getLecture() {
+        return lecture;
     }
 }

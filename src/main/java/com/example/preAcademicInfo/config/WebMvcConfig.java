@@ -1,8 +1,14 @@
 package com.example.preAcademicInfo.config;
 
 import com.example.preAcademicInfo.controller.interceptor.Interceptor;
+import com.example.preAcademicInfo.constants.Profile;
+import com.example.preAcademicInfo.model.User;
+import com.example.preAcademicInfo.repository.UserRepository;
+import com.example.preAcademicInfo.utils.ContextProvider;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -34,6 +40,19 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Bean
     public Interceptor interceptor(){
         return new Interceptor();
+    }
+
+    @Bean
+    public CommandLineRunner demoData(UserRepository repo) {
+
+        PasswordEncoder encoder = ContextProvider.getBean(PasswordEncoder.class);
+        User u = repo.findByUsername("admin");
+        if (u == null) {
+            return args -> {
+                repo.save(new User("admin", encoder.encode("admin"), "mail@mail.com", Profile.ADMIN.getName()));
+            };
+        }
+        return args -> {};
     }
 
     @Override

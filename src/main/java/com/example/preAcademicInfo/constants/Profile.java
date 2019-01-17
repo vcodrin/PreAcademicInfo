@@ -1,4 +1,4 @@
-package com.example.preAcademicInfo.model;
+package com.example.preAcademicInfo.constants;
 
 import com.example.preAcademicInfo.bases.AbstractConstant;
 

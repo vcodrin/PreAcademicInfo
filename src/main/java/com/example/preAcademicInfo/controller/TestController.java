@@ -1,6 +1,6 @@
 package com.example.preAcademicInfo.controller;
 
-import com.example.preAcademicInfo.model.Profile;
+import com.example.preAcademicInfo.constants.Profile;
 import com.example.preAcademicInfo.model.User;
 import com.example.preAcademicInfo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

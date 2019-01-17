@@ -2,13 +2,12 @@ package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.data.Function;
 import com.example.preAcademicInfo.data.FunctionsSingletone;
-import com.example.preAcademicInfo.model.Profile;
+import com.example.preAcademicInfo.constants.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +20,6 @@ public class HomepageController {
 
         String profile = (String) request.getSession().getAttribute("role");
         model.addAttribute("functions", userFunctions(profile));
-
-
         return "home";
     }
 

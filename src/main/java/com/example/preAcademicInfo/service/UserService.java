@@ -56,26 +56,22 @@ public class UserService {
         }
     }
 
-    public ValidationError verifyLogin(User user) {
+    public User verifyLogin(User user, ValidationError error) {
+        User userForLogin = null;
         if (user != null &&
                 user.getUsername() != null && user.getPassword() != null) {
-            User userForLogin = userRepository.findByUsername(user.getUsername());
+            userForLogin = userRepository.findByUsername(user.getUsername());
             if (userForLogin != null) {
                 if (!encoder.matches(user.getPassword(), userForLogin.getPassword())) {
-                    return new ValidationError("user.password.match", env);
+                    error =  new ValidationError("user.password.match", env);
                 }
-// else{
-//                    if (userForLogin.getDisabled()){
-//                        return new ValidationError("user.account.disabled", env);
-//                    }
-//                }
             } else {
-                return new ValidationError("user.notFound", env);
+                error = new ValidationError("user.notFound", env);
             }
         } else {
-            return new ValidationError("user.notValid", env);
+            error = new ValidationError("user.notValid", env);
         }
-        return new ValidationError();
+        return userForLogin;
     }
 
     public void save(User user, List<Error> errors) {

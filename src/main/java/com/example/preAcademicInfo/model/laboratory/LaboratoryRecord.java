@@ -1,14 +1,11 @@
 package com.example.preAcademicInfo.model.laboratory;
 
 import com.example.preAcademicInfo.bases.Record;
-import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
 public class LaboratoryRecord extends Record {
 
     @Column
@@ -22,7 +19,34 @@ public class LaboratoryRecord extends Record {
     @JoinColumn(name = "idLaboratory", nullable = false)
     private Laboratory laboratory;
 
+    public LaboratoryRecord() {
+    }
+
     public String toString(){
         return "hehe";
+    }
+
+    public Float getPercentageLaboratoryGrade() {
+        return percentageLaboratoryGrade;
+    }
+
+    public void setPercentageLaboratoryGrade(Float percentageLaboratoryGrade) {
+        this.percentageLaboratoryGrade = percentageLaboratoryGrade;
+    }
+
+    public List<LaboratoryRecordStudent> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<LaboratoryRecordStudent> records) {
+        this.records = records;
+    }
+
+    public Laboratory getLaboratory() {
+        return laboratory;
+    }
+
+    public void setLaboratory(Laboratory laboratory) {
+        this.laboratory = laboratory;
     }
 }

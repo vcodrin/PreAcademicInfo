@@ -1,17 +1,12 @@
 package com.example.preAcademicInfo.bases;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 @MappedSuperclass
-@Getter
-@Setter
-@NoArgsConstructor
 public abstract class Record extends BaseObject {
 
 
@@ -23,4 +18,19 @@ public abstract class Record extends BaseObject {
     private Boolean requiresGrade;
 
 
+    public Date getAttendanceDate() {
+        return attendanceDate;
+    }
+
+    public void setAttendanceDate(Date attendanceDate) {
+        this.attendanceDate = attendanceDate;
+    }
+
+    public Boolean getRequiresGrade() {
+        return requiresGrade;
+    }
+
+    public void setRequiresGrade(Boolean requiresGrade) {
+        this.requiresGrade = requiresGrade;
+    }
 }

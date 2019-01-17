@@ -1,14 +1,12 @@
 package com.example.preAcademicInfo.model;
 
 import com.example.preAcademicInfo.bases.BaseObject;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
 public class Professor extends BaseObject implements Serializable {
 
     @Column
@@ -40,4 +38,46 @@ public class Professor extends BaseObject implements Serializable {
         this.title = title;
     }
 
+    public Professor() {
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Bracket> getBrackets() {
+        return brackets;
+    }
+
+    public void setBrackets(List<Bracket> brackets) {
+        this.brackets = brackets;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 }

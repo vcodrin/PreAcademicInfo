@@ -4,14 +4,12 @@ import com.example.preAcademicInfo.bases.BaseObject;
 import com.example.preAcademicInfo.model.laboratory.Laboratory;
 import com.example.preAcademicInfo.model.lecture.Lecture;
 import com.example.preAcademicInfo.model.seminar.Seminar;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
 public class Course extends BaseObject implements Serializable {
 
     @Column
@@ -19,6 +17,9 @@ public class Course extends BaseObject implements Serializable {
 
     @Column
     private String code;
+
+    @Column
+    private Integer credits;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course", orphanRemoval = true)
     private List<Exam> exams;
@@ -57,6 +58,78 @@ public class Course extends BaseObject implements Serializable {
     }
 
     public Course() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Integer credits) {
+        this.credits = credits;
+    }
+
+    public List<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
+    }
+
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
+    }
+
+    public Seminar getSeminar() {
+        return seminar;
+    }
+
+    public void setSeminar(Seminar seminar) {
+        this.seminar = seminar;
+    }
+
+    public Laboratory getLaboratory() {
+        return laboratory;
+    }
+
+    public void setLaboratory(Laboratory laboratory) {
+        this.laboratory = laboratory;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Professor> getProfessors() {
+        return professors;
+    }
+
+    public void setProfessors(List<Professor> professors) {
+        this.professors = professors;
     }
 
     public String toString(){

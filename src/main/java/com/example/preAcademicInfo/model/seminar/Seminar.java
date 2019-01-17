@@ -2,16 +2,12 @@ package com.example.preAcademicInfo.model.seminar;
 
 import com.example.preAcademicInfo.bases.AbstractCourseType;
 import com.example.preAcademicInfo.model.Course;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
 public class Seminar extends AbstractCourseType implements Serializable {
 
     @OneToMany(mappedBy = "seminar", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -27,5 +23,16 @@ public class Seminar extends AbstractCourseType implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public Seminar() {
+    }
+
+    public List<SeminarRecord> getRecords() {
+        return records;
+    }
+
+    public Course getCourse() {
+        return course;
     }
 }

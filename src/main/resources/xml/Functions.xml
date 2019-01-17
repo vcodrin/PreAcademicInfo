@@ -14,4 +14,9 @@
 		<profile>Admin</profile>
 		<url>/addStudent</url>
     </function>
+	<function id="4">
+		<name>Add Group</name>
+		<profile>Admin</profile>
+		<url>/addGroup</url>
+	</function>
 </functions>

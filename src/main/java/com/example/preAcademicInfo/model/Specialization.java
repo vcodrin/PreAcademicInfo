@@ -1,7 +1,6 @@
 package com.example.preAcademicInfo.model;
 
 import com.example.preAcademicInfo.bases.BaseObject;
-import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Entity
-@Data
 public class Specialization extends BaseObject implements Serializable {
 
     @Column
@@ -32,4 +30,38 @@ public class Specialization extends BaseObject implements Serializable {
         this.line = line;
     }
 
+    public Specialization() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getLine() {
+        return line;
+    }
+
+    public void setLine(String line) {
+        this.line = line;
+    }
+
+    public Bracket getBracket() {
+        return bracket;
+    }
+
+    public void setBracket(Bracket bracket) {
+        this.bracket = bracket;
+    }
 }

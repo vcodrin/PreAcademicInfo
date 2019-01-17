@@ -1,7 +1,6 @@
 package com.example.preAcademicInfo.constants;
 
 import com.example.preAcademicInfo.bases.AbstractConstant;
-import com.example.preAcademicInfo.model.Profile;
 
 import java.util.Arrays;
 import java.util.List;

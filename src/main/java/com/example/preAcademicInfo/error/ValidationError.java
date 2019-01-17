@@ -1,11 +1,7 @@
 package com.example.preAcademicInfo.error;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.core.env.Environment;
 
-@Getter
-@Setter
 public class ValidationError {
 
     public ValidationError(String label, Environment env){
@@ -15,6 +11,22 @@ public class ValidationError {
         }else{
             this.message = label;
         }
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public ValidationError() {

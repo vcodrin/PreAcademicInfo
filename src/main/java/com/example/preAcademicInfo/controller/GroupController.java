@@ -1,8 +1,10 @@
 package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.constants.BracketAttribute;
+import com.example.preAcademicInfo.constants.CourseAttribute;
 import com.example.preAcademicInfo.model.Group;
 import com.example.preAcademicInfo.service.GroupService;
+import com.example.preAcademicInfo.utils.FormModelling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class GroupController {
@@ -28,6 +32,7 @@ public class GroupController {
     public String addGroup(Model model){
 
         addToModel(model, new Group());
+
         return "addGroup";
     }
 
@@ -49,6 +54,7 @@ public class GroupController {
     private void addToModel(Model model, Group group){
         model.addAttribute("model","group");
         model.addAttribute("group", group);
+//        model.addAttribute("attributes", FormModelling.createFormAttributes(Group.class));
         model.addAttribute("attributes", BracketAttribute.values);
     }
 }

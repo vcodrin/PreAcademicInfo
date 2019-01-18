@@ -2,10 +2,12 @@ package com.example.preAcademicInfo.controller;
 
 import com.example.preAcademicInfo.error.ValidationError;
 import com.example.preAcademicInfo.constants.Profile;
+import com.example.preAcademicInfo.model.Group;
 import com.example.preAcademicInfo.model.User;
 import com.example.preAcademicInfo.repository.UserRepository;
 import com.example.preAcademicInfo.service.UserService;
 import com.example.preAcademicInfo.utils.EnvUtil;
+import com.example.preAcademicInfo.utils.FormModelling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -38,8 +41,7 @@ public class UserController {
 
     @GetMapping(value = "/login")
     public String login(Model model) {
-//        User user = new User("admin",encoder.encode("admin"),"mail@mail.com", Profile.ADMIN.getName());
-//        userRepository.save(user);
+
         model.addAttribute("user", new User());
         model.addAttribute("action", "/login");
         model.addAttribute("forgotPassword", "/forgotPassword");
@@ -90,7 +92,7 @@ public class UserController {
         List<Error> errors = new ArrayList<>();
         userService.createPasswordChangeRequest(email, nrMatricol, newPassword, errors);
         if (errors.isEmpty()){
-            return "successPasswordChange";
+            return "redirect:/login";
         }
         return "forgotPassword";
     }

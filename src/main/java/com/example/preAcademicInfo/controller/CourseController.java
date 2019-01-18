@@ -68,6 +68,6 @@ public class CourseController {
             addAttributesToModel(model);
             return "addCourse";
         }
-        return "redirect:/main";
+        return "redirect:/home";
     }
 }

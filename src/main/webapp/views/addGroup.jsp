@@ -7,23 +7,24 @@
                 <td colspan="1">
                     <fieldset>
                         <c:forEach items="${attributes}" var="attr">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">${FormatUtils.capitalize(attr.getName())}</label>
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <form:input path="${attr.getName()}"
-                                                placeholder="${FormatUtils.capitalize(attr.getName())}"
-                                                class="form-control"
-                                                required="required" value=""
-                                                type="text"/>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">${FormatUtils.capitalize(attr.getName())}</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <form:input path="${attr.getName()}"
+                                                    placeholder="${FormatUtils.capitalize(attr.getName())}"
+                                                    class="form-control"
+                                                    required="required" value=""
+                                                    type="text"/>
+                                    </div>
                                 </div>
+                                <form:errors path="${attr.getName()}" cssClass="col-md-8 control-label"
+                                             cssStyle="color: red; font-size: 15px"/>
                             </div>
-                            <form:errors path="${attr.getName()}" cssClass="col-md-8 control-label"
-                                         cssStyle="color: red; font-size: 15px"/>
-                        </div>
+                        </c:forEach>
                     </fieldset>
-                    </c:forEach>
+
                 </td>
             </tr>
             <tr>

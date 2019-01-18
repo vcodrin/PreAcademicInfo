@@ -1,6 +1,5 @@
 package com.example.preAcademicInfo.controller.interceptor;
 
-import com.example.preAcademicInfo.constants.FucntionsC;
 import com.example.preAcademicInfo.service.UserService;
 import com.example.preAcademicInfo.utils.ContextProvider;
 import org.springframework.web.bind.annotation.RequestMapping;

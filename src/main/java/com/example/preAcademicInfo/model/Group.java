@@ -1,6 +1,8 @@
 package com.example.preAcademicInfo.model;
 
 import com.example.preAcademicInfo.bases.BaseObject;
+import com.example.preAcademicInfo.utils.ModelClass;
+import com.example.preAcademicInfo.utils.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,14 +12,17 @@ import java.util.List;
 public class Group extends BaseObject implements Serializable {
 
     @Column
+    @Type(inputType = "text", path = "number", attributes = {"required"}, values = {"required"})
     private String number;
 
     @Column
+    @Type(inputType = "number", path = "year", attributes = {"required"}, values = {"required"})
     private String year;
 
     @OneToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             mappedBy = "group")
+    @ModelClass(name = "specialization")
     private Specialization specialization;
 
     @ManyToMany(mappedBy = "groups")

@@ -1,6 +1,7 @@
 package com.example.preAcademicInfo.model;
 
 import com.example.preAcademicInfo.bases.BaseObject;
+import com.example.preAcademicInfo.utils.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +13,15 @@ import java.io.Serializable;
 public class Specialization extends BaseObject implements Serializable {
 
     @Column
+    @Type(inputType = "text", path = "name")
     private String name;
 
     @Column
+    @Type(inputType = "number", path = "number")
     private String number;
 
     @Column
+    @Type(inputType = "text", path = "line")
     private String line;
 
     @OneToOne(fetch = FetchType.LAZY)
